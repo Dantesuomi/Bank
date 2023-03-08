@@ -40,18 +40,18 @@ public class Bank {
         this.user = new User();
         this.user.setAccountNumber(generateAccountNumber());
         scanner.nextLine();
-        System.out.println("Enter first name and last name!");
+        System.out.println("Please, enter first name and last name");
         this.user.setUserFullName(Main.scanner.nextLine());
 
         Pattern fullNamePattern = Pattern.compile("^([A-Za-z]*((\\s)))+[A-Za-z]*$");
         Matcher fullNameMatcher = fullNamePattern.matcher(this.user.getUserFullName());
         while (fullNameMatcher.matches()== false) {
-            System.out.println("Please enter valid first name and last name!");
+            System.out.println("Please, enter valid first name and last name!");
             this.user.setUserFullName(Main.scanner.nextLine());
             fullNameMatcher = fullNamePattern.matcher(this.user.getUserFullName());
         }
 
-        System.out.println("Enter password");
+        System.out.println("Please, enter password. It should be at least 6 characters");
         String password = Main.scanner.nextLine();
 
         Pattern passwordPattern = Pattern.compile("[a-zA-Z0-9+_.!-]{6,20}");

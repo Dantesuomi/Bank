@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         Connection dbConnection = DBConnection.getConnection();
         Bank fabulousBank = null;
-        System.out.println("Welcome to Fabulous bank.app.Bank!");
+        System.out.println("Welcome to Fabulous Bank!");
         int choice = 0;
         do {
             printMainMenuInstructions();
@@ -31,20 +31,17 @@ public class Main {
                         getBankMenu(dbConnection, fabulousBank);
                     break;
                     case 3:
-
-                    break;
-                    case 4:
                         System.out.println("Goodbye!");
                     break;
                     default:
-                        System.out.println("Input not valid (1-4)");
+                        System.out.println("Input not valid (1-3)");
                     break;
                 }
             }
             catch (InputMismatchException e){
-                System.out.println("Input not valid (1-4)");
+                System.out.println("Input not valid (1-3)");
             }
-        } while (choice != 4);
+        } while (choice != 3);
     }
 
     private static void getBankMenu(Connection connection, Bank fabulousBank){
@@ -55,7 +52,7 @@ public class Main {
                 choice = scanner.nextInt();
                 switch (choice) {
                     case 1:
-                        System.out.println("Your balance is " + fabulousBank.getBalance());
+                        System.out.println("Your balance is " + fabulousBank.getBalance() + " EUR");
                         break;
                     case 2:
                         creditMenu(fabulousBank);
@@ -70,21 +67,20 @@ public class Main {
                         System.exit(0);
                         break;
                     default:
-                        System.out.println("Input not valid (1-4)");
+                        System.out.println("Input not valid (1-5)");
                         break;
                 }
             }
             catch (InputMismatchException e){
-                System.out.println("Input not valid (1-4)");
+                System.out.println("Input not valid (1-5)");
             }
         } while (choice != 4 && choice != 5);
     }
     public static void printMainMenuInstructions(){
-        System.out.println("Do you want to login, register a new user or replace existing user?");
+        System.out.println("Do you want to login or register a new user ?");
         System.out.println("\t 1 - login");
         System.out.println("\t 2 - register a new user");
-        System.out.println("\t 3 - replace existing user");
-        System.out.println("\t 4 - quit application");
+        System.out.println("\t 3 - quit application");
     }
 
     public static void creditMenu(Bank fabulousBank){
@@ -92,7 +88,7 @@ public class Main {
         try{
             double creditAmount = scanner.nextDouble();
             fabulousBank.creditUser(creditAmount);
-            System.out.println("Your balance is " + fabulousBank.getBalance());
+            System.out.println("Your balance is " + fabulousBank.getBalance() + " EUR");
         }
         catch (Exception e){
             System.out.println("Input not valid");
@@ -104,7 +100,7 @@ public class Main {
         try{
             double creditAmount = scanner.nextDouble();
             fabulousBank.debitUser(creditAmount);
-            System.out.println("Your balance is " + fabulousBank.getBalance());
+            System.out.println("Your balance is " + fabulousBank.getBalance() + " EUR");
         }
         catch (Exception e){
             System.out.println("Input not valid");

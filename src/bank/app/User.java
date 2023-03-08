@@ -1,4 +1,4 @@
-package bank.app;//TODO
+package bank.app; //TODO
         //Users can register,
         //bank.app.User class should have basic information like account number, balance, name, gender etc.
         //bank.app.Bank class should be able to accept a single user at a time, and have methods to credit and debit the user as well as show the user balance.
